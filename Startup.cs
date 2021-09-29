@@ -28,6 +28,10 @@ namespace LearningMngSys
         {
 
             services.AddControllers();
+            services.AddControllers(Opt => Opt.ReturnHttpNotAcceptable = true)
+                .AddNewtonsoftJson()
+                .AddXmlDataContractSerializerFormatters();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LearningMngSys", Version = "v1" });
