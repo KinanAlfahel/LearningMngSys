@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Lms.Data.Data;
 
 namespace LearningMngSys
 {
@@ -36,6 +38,9 @@ namespace LearningMngSys
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LearningMngSys", Version = "v1" });
             });
+
+            services.AddDbContext<LmsContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("LmsContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
